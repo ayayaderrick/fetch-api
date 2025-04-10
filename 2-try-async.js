@@ -1,18 +1,15 @@
 // using async and await instead of chaining then()
 // still needs error handling with try..catch
-const url = 'https://jsonplaceholder.typicode.com/usersdfdfgdf';
+const url = "https://jsonplaceholder.typicode.com/users";
 
-export async function getData() {
-  //
-  //fetch().then().then().catch()
-
+export const getData = async () => {
   try {
-    let response = await fetch(url);
+    const response = await fetch(url);
     console.log(response);
-    if (!response.ok) throw new Error('not a valid response');
-    let dataobj = await response.json();
-    console.log(dataobj);
-  } catch (err) {
-    console.warn(err.message);
+    if (!response.ok) throw new Error("Invalid Response");
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.log(error);
   }
-}
+};
